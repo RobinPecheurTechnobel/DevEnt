@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h1 {
+        @apply text-2xl text-green-500 uppercase mb-2;
+    
+    }
+    button{
+        @apply bg-slate-700 text-slate-300 border border-slate-800 rounded-md p-2 m-1; 
+    }
+}
+@layer components {
+}
+@layer utilities {
+}

@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/component/navbar/navbar.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthTokenInterceptor } from './shared/interceptor/auth-token.interceptor';
 
@@ -14,6 +15,7 @@ import { AuthTokenInterceptor } from './shared/interceptor/auth-token.intercepto
     AppComponent,
     NavbarComponent,
     HomePageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,

@@ -2,22 +2,22 @@
     <img src="../../../assets/images/clavent.svg" height="100px">
     <ul>
         <li>
-            <a>Accueil</a>
+            <a routerLink="">Accueil</a>
         </li>
         <li>
             <a>Les évènements</a>
         </li>
         <li>
-            <a>Mes évènements</a>
+            <a *ngIf="user">Mes évènements</a>
         </li>
         <li>
-            <p>Bonjour Aude</p>
+            <p  *ngIf="user">Bonjour {{user.firstname}}</p>
         </li>
         <li>
-            <button>Se connecter</button>
+            <button *ngIf="!user"  routerLink="/login">Se connecter</button>
         </li>
         <li>
-            <button>Me déconnecter</button>
+            <button *ngIf="user">Me déconnecter</button>
         </li>
     </ul>
 

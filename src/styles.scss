@@ -14,8 +14,10 @@
         
     
     }
-    button{
+    button,
+    input[type=submit]{
         @apply bg-slate-700 text-slate-300 border border-slate-800 rounded-md p-2 m-1; 
+
     }
     .encart{
         @apply  rounded-md m-1 p-3;
@@ -28,6 +30,13 @@
     .vFlex{
         display: flex;
         flex-direction: column;
+    }
+
+    //formulaire
+    input[type=text]{
+        @apply rounded-lg;
+        background-color: rgb(250,250,255);
+        width: 350px;
     }
 }
 @layer components {

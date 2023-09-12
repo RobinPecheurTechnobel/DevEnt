@@ -59,3 +59,27 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ### Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Compodoc
+
+### Command
+
+npm run startDoc
+
+Or one of these :
+
+#### Build
+
+compodoc -p tsconfig.doc.json
+
+#### Serve
+
+compodoc -s
+
+#### Build and serve
+
+compodoc -p tsconfig.doc.json -s
+
+### include and exclude
+
+in file tsconfig.doc.json

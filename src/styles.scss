@@ -4,12 +4,30 @@
 @tailwind utilities;
 
 @layer base {
-    h1 {
-        @apply text-2xl text-green-500 uppercase mb-2;
+    body{
+        background-color: rgb(240,240,255);
+        color: rgb(15,15,0);
+    }
+    h1,h2,h3 {
+        @apply text-2xl  uppercase mb-2;
+        color: rgb(200,200,0);
+        
     
     }
     button{
         @apply bg-slate-700 text-slate-300 border border-slate-800 rounded-md p-2 m-1; 
+    }
+    .encart{
+        @apply  rounded-md m-1 p-3;
+        background-color: rgb(220,220,240);
+    }
+
+    .hFlex{
+        display: flex;
+    }
+    .vFlex{
+        display: flex;
+        flex-direction: column;
     }
 }
 @layer components {

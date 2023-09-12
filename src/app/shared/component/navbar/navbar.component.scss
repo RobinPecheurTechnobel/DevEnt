@@ -10,5 +10,9 @@ div{
     ul{
         display: flex;
         justify-content: flex-end;
+        align-items: center;
+        li{
+            margin-left: 10px;
+        }
     }
 }

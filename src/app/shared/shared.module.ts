@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormErrorComponent } from './component/form-error/form-error.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    FormErrorComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -14,7 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   exports:[
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormErrorComponent
   ]
 })
 export class SharedModule { }

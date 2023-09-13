@@ -27,6 +27,7 @@ export class LoginPageComponent {
       next : ( value ) => {
         // redirection
         this.errorMessage = '';
+        this._router.navigateByUrl("");
       },
       error : ( error ) => {
         //indiquer l'erreur

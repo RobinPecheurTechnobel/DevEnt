@@ -12,6 +12,8 @@ export class LoginPageComponent {
   identifier :string = '';
   password : string = '';
 
+  errorMessage : string = '';
+
   /**
    *
    */
@@ -24,9 +26,11 @@ export class LoginPageComponent {
     this._authService.login(this.identifier, this.password).subscribe({
       next : ( value ) => {
         // redirection
+        this.errorMessage = '';
       },
       error : ( error ) => {
         //indiquer l'erreur
+        this.errorMessage = error;
       }
     })
   }

@@ -2,6 +2,9 @@
 <div class="vFlex">
     <input type="text" placeholder="Login ou Email" [(ngModel)]="identifier">
     <input type="password" placeholder="Mot de passe" [(ngModel)]="password">
+
+    <p style="color:rgb(255,0,0)" *ngIf="errorMessage.replaceAll(' ','').length>0">{{errorMessage}}</p>
+
     <button (click)="connection()">Me connecter</button>
     <a href="">Pas de compte ? C'est par ici</a>
 </div>

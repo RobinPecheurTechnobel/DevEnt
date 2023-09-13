@@ -26,6 +26,7 @@ import { InscriptionPageComponent } from './inscription-page/inscription-page.co
     HttpClientModule
   ],
   providers: [
+    { provide : "urlBase", useValue : "https://localhost:7245/"},
     { provide : HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

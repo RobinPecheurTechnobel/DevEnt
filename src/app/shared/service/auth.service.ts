@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Member, User } from '../model/user';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -14,11 +14,11 @@ export class AuthService {
   $connectedMember : Observable< Member | undefined > = this._$connectedMember.asObservable();
   private _member : Member | undefined;
 
-  urlBase : string = "https://localhost:7245/";
+  private _loginEndPoint : string = "api/Auth/Login";
+  private _registerEndPoint : string = "api/Auth/Register";
 
-  loginEndPoint : string = "api/Auth/Login";
-
-  constructor( private _httpClient : HttpClient ) { }
+  constructor( @Inject('urlBase') private _urlBase : number,
+          private _httpClient : HttpClient ) { }
 
   getMember() : Member |undefined{
     return this._member;
@@ -44,6 +44,12 @@ export class AuthService {
   private _loginToApi(identifier:string, password:string) : Observable<User> {
 
     let login : Login = new Login( identifier,password);
-    return this._httpClient.post<User>( this.urlBase + this.loginEndPoint, login );
+    return this._httpClient.post<User>( this._urlBase + this._loginEndPoint, login );
+  }
+
+  register (member : Member) : Observable<Member>{
+    let observable = this._httpClient.post<Member>( this._urlBase + this._registerEndPoint, member);
+    console.log(member);
+    return observable;
   }
 }

@@ -9,13 +9,15 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthTokenInterceptor } from './shared/interceptor/auth-token.interceptor';
+import { InscriptionPageComponent } from './inscription-page/inscription-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomePageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    InscriptionPageComponent
   ],
   imports: [
     BrowserModule,

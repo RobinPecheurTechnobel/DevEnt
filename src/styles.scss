@@ -15,7 +15,8 @@
     
     }
     button,
-    input[type=submit]{
+    input[type=submit],
+    button[type=submit]{
         @apply bg-slate-700 text-slate-300 border border-slate-800 rounded-md p-2 m-1; 
 
     }

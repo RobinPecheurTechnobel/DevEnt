@@ -45,14 +45,21 @@ export class Member {
      * 
      * Est requis
      */
-    firstname : string;
+    firstName : string;
 
     /**
      * Nom de famille de l'utilisateur
      * 
      * Est requis
      */
-    lastname: string;
+    lastName: string;
+
+    /**
+     * mot de passe de l'utilisateur
+     * 
+     * n'est pas null en cas d'inscription
+     */
+    password : string|undefined;
 
     /**
      * Date de naissance de l'utilisateur
@@ -66,11 +73,11 @@ export class Member {
      * 
      * Ce qui n'est pas indiqué reste undifened jusqu'à leur définition
      */
-    constructor( pseudo:string, email:string, firstname :string, lastname:string ) {
+    constructor( pseudo:string, email:string, firstName :string, lastName:string ) {
         this.pseudo = pseudo;
         this.email = email;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     /**
@@ -89,5 +96,14 @@ export class Member {
      */
     public setBirthdate ( birthdate : Date){
         this.birthdate = birthdate;
+    }
+    /**
+     * Définition du mot de passe
+     * 
+     * @param { string } password mot de passe
+     * 
+     */
+    public setPassword ( password : string){
+        this.password = password;
     }
 }

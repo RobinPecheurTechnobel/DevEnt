@@ -32,7 +32,6 @@ export class NavbarComponent implements OnInit{
    this._authService.$connectedMember.subscribe({
       next : ( value ) => { 
         this.user = value; 
-        console.log(this.user);
       }
     })
   }

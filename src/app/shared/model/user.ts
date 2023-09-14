@@ -45,14 +45,14 @@ export class Member {
      * 
      * Est requis
      */
-    firstName : string;
+    firstname : string;
 
     /**
      * Nom de famille de l'utilisateur
      * 
      * Est requis
      */
-    lastName: string;
+    lastname: string;
 
     /**
      * mot de passe de l'utilisateur
@@ -73,11 +73,11 @@ export class Member {
      * 
      * Ce qui n'est pas indiqué reste undifened jusqu'à leur définition
      */
-    constructor( pseudo:string, email:string, firstName :string, lastName:string ) {
+    constructor( pseudo:string, email:string, firstname :string, lastname:string ) {
         this.pseudo = pseudo;
         this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstname = firstname;
+        this.lastname = lastname;
     }
 
     /**

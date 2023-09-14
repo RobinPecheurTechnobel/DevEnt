@@ -22,12 +22,17 @@ export class HomePageComponent implements OnInit{
   user : Member | undefined;
 
   /**
-   *
+   * constructeur du composant
+   * 
+   * @param { AuthService } _authService injection du service d'authentification
    */
   constructor(private _authService : AuthService) {
     
   }
   
+  /**
+   * Méthode utilisé pour s'**abonner** dans le service d'authentification **au modification de la variable connectedUser** designant l'utilisateur connecté
+   */
   ngOnInit(): void {
    this._authService.$connectedMember.subscribe({
       next : ( value ) => { 

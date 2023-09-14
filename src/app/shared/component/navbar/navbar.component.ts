@@ -23,13 +23,19 @@ export class NavbarComponent implements OnInit{
   user : Member | undefined;
 
   /**
-   *
+   * Constructeur du composant
+   * 
+   * @param { AuthService } _authService injection du service d'authentificateur
+   * @param { Router } _router injection du service router pour la gestion des redirection
    */
   constructor(private _authService : AuthService,
     private _router : Router) {
     
   }
-  
+    
+  /**
+   * Méthode utilisé pour s'**abonner** dans le service d'authentification **au modification de la variable connectedUser** designant l'utilisateur connecté
+   */
   ngOnInit(): void {
    this._authService.$connectedMember.subscribe({
       next : ( value ) => { 
@@ -38,9 +44,14 @@ export class NavbarComponent implements OnInit{
     })
   }
 
-  disconnection () : void{
-    //vider le localStorage
-    localStorage.clear();
+  /**
+   * Methode pour la deconnection de l'utilisateur connecté
+   * 
+   * supression du token dans le localstorage
+   * 
+   * redirection vers la page d'accueil
+   */
+  disconnection () : void{    
     //trigger la deconnexion générale
     this._authService.disconnection()
 

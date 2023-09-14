@@ -5,6 +5,9 @@ import { AuthService } from '../shared/service/auth.service';
 import { confirmationValidator } from '../shared/validator/confimation.validator';
 import { Router } from '@angular/router';
 
+/**
+ * Composant responsable de la page d'inscription des utilisateurs
+ */
 @Component({
   selector: 'app-inscription-page',
   templateUrl: './inscription-page.component.html',
@@ -12,12 +15,24 @@ import { Router } from '@angular/router';
 })
 export class InscriptionPageComponent {
 
+  /**
+   * Chaine de caractère pour les erreurs (reçu de la part du server)
+   * 
+   * Ne sera afficher que s'il contient quelque chose
+   */
   errorMessage : string = '';
 
+  /**
+   * Forumlaire d'inscription
+   */
   registerForm : FormGroup;
 
   /**
-   *
+   * Constructeur du composant
+   * 
+   * @param { FormBuilder } _fb Service de gestion de formulaire
+   * @param { AuthService } _authService Service d'identifiactaion
+   * @param { Router } _router Service pour les routes, utilisé pour les redirections 
    */
   constructor( private _fb : FormBuilder,
     private _authService : AuthService, 
@@ -35,9 +50,15 @@ export class InscriptionPageComponent {
     this.registerForm.controls["confirmPassword"].setValidators(confirmationValidator(this.registerForm.controls["password"]));
   }
 
+  /**
+   * Méthode d'inscription de notre nouvel utilisateur
+   * 
+   * si le formulaire est **bien remplit**, on fait appel au service d'authentification, puis on est redirigé sur la page d'accueil
+   * 
+   * Dans le cas contraire, l'utilisateur est invité à corriger les éléments "incorrects" du formulaire 
+   */
   register() :void{
     if(this.registerForm.valid){
-      //TODO do when it's ok
       this._authService.register(this.registerForm.value as Member).subscribe({
         next : ( value ) => {
           this.errorMessage = '';

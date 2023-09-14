@@ -51,4 +51,8 @@ export class AuthService {
     let observable = this._httpClient.post<Member>( this._urlBase + this._registerEndPoint, member);
     return observable;
   }
+
+  disconnection() : void {
+    this._$connectedMember.next(undefined);
+  }
 }

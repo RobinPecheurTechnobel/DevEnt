@@ -17,7 +17,7 @@
             <button *ngIf="!user"  routerLink="/login">Se connecter</button>
         </li>
         <li>
-            <button *ngIf="user">Me déconnecter</button>
+            <button *ngIf="user" (click)="disconnection()">Me déconnecter</button>
         </li>
     </ul>
 

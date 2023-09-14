@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Member, User } from '../../model/user';
 import { AuthService } from '../../service/auth.service';
+import { Router } from '@angular/router';
 
 /**
  * Composant responsable de la navbar
@@ -24,7 +25,8 @@ export class NavbarComponent implements OnInit{
   /**
    *
    */
-  constructor(private _authService : AuthService) {
+  constructor(private _authService : AuthService,
+    private _router : Router) {
     
   }
   
@@ -34,5 +36,16 @@ export class NavbarComponent implements OnInit{
         this.user = value; 
       }
     })
+  }
+
+  disconnection () : void{
+    //vider le localStorage
+    localStorage.clear();
+    //trigger la deconnexion générale
+    this._authService.disconnection()
+
+    //redirection vers l'accueil
+    this._router.navigateByUrl("");
+
   }
 }

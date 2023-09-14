@@ -49,7 +49,6 @@ export class AuthService {
 
   register (member : Member) : Observable<Member>{
     let observable = this._httpClient.post<Member>( this._urlBase + this._registerEndPoint, member);
-    console.log(member);
     return observable;
   }
 }

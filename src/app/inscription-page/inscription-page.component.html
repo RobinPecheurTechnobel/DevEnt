@@ -2,6 +2,8 @@
 
     <form class="vFlex" [formGroup]="registerForm" (ngSubmit)="register()">
 
+        <p style="color:rgb(255,0,0)" *ngIf="errorMessage.replaceAll(' ','').length>0">{{errorMessage}}</p>
+        
         <input type="text" placeholder="Pseudo" formControlName="pseudo">
         <app-form-error [control]="registerForm.get('pseudo')"></app-form-error>
 

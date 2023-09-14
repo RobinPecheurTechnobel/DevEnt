@@ -11,7 +11,8 @@
         <input type="password" placeholder="Mot de passe" formControlName="password">
         <app-form-error [control]="registerForm.get('password')"></app-form-error>
 
-        <input type="password" placeholder="Confirmer le mot de passe">
+        <input type="password" placeholder="Confirmer le mot de passe" formControlName="confirmPassword">
+        <app-form-error [control]="registerForm.get('confirmPassword')"></app-form-error>
         
         <input type="text" placeholder="Prénom" formControlName="firstName">
         <app-form-error [control]="registerForm.get('firstName')"></app-form-error>

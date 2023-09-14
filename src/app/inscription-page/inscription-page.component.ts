@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Member } from '../shared/model/user';
 import { AuthService } from '../shared/service/auth.service';
+import { confirmationValidator } from '../shared/validator/confimation.validator';
 
 @Component({
   selector: 'app-inscription-page',
@@ -16,16 +17,17 @@ export class InscriptionPageComponent {
    */
   constructor( private _fb : FormBuilder,
     private _authService : AuthService) {
-    //TODO validator async
     this.registerForm = this._fb.group({
       pseudo : [null,[Validators.required],[]],
       email : [null,[Validators.required, Validators.email],[]],
       //TODO confirmation password
-      //TODO regrex password ?
       password : [null,[Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@$!%*?é#èçàµù]).{5,}/)],[]],
+      confirmPassword : [null,[],[]],
       firstName : [null,[Validators.required],[]],
       lastName : [null,[Validators.required],[]],
     });
+
+    this.registerForm.controls["confirmPassword"].setValidators(confirmationValidator(this.registerForm.controls["password"]));
   }
 
   register() :void{

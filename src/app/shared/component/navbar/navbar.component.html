@@ -5,7 +5,7 @@
             <a routerLink="">Accueil</a>
         </li>
         <li>
-            <a>Les évènements</a>
+            <a routerLink="/event">Les évènements</a>
         </li>
         <li>
             <a *ngIf="user">Mes évènements</a>
@@ -14,7 +14,7 @@
             <p  *ngIf="user">Bonjour {{user.firstname}}</p>
         </li>
         <li>
-            <button *ngIf="!user"  routerLink="/login">Se connecter</button>
+            <button *ngIf="!user" routerLink="/login">Se connecter</button>
         </li>
         <li>
             <button *ngIf="user" (click)="disconnection()">Me déconnecter</button>

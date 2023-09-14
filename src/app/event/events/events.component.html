@@ -1,0 +1,14 @@
+<main class="vFlex">
+    <h1>Les prochains évènements :</h1>
+    <button>Créer une nouvelle activité !</button>
+    <section *ngIf="events.length > 0; else noEvent">
+        <article *ngFor="let event of events" id="{{event.id}}">
+            <p>{{ event.name }}</p>
+        </article>
+    </section>
+    <ng-template #noEvent>
+        <section>
+            <h2>Nous manquons d'événements ...</h2>
+        </section>
+    </ng-template>
+</main>

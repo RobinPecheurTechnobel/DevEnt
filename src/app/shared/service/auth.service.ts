@@ -48,7 +48,7 @@ export class AuthService {
    * @param _urlBase prend le paramétre centralisé de la base de l'api depuis l'app-module
    * @param _httpClient Service envoyant des requêtes http
    */
-  constructor( @Inject('urlBase') private _urlBase : number,
+  constructor( @Inject('urlBase') private _urlBase : string,
           private _httpClient : HttpClient ) { }
 
   /**

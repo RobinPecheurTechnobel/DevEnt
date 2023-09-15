@@ -2,9 +2,20 @@
     <h1>Les prochains évènements :</h1>
     <button>Créer une nouvelle activité !</button>
     <section *ngIf="events.length > 0; else noEvent">
-        <article *ngFor="let event of events" id="{{event.id}}">
-            <p>{{ event.name }}</p>
-        </article>
+        <a  *ngFor="let event of events" id="{{event.id}}" routerLink="/event/{{event.id}}">
+            <article class="event">
+                <h2>{{ event.name }}</h2>
+
+                <p *ngIf="event.description; else noDescription">{{ event.description }}</p>
+                <ng-template #noDescription>
+                    <p> ----------------</p>
+                </ng-template>
+
+                <p>Débute le : {{ event.startDate | date: "dd/MM/YYYY' à 'HH:mm" }}</p>
+                <p>Termine le : {{ event.endDate | date: "dd/MM/YYYY' à 'HH:mm" }}</p>
+
+            </article>
+        </a>
     </section>
     <ng-template #noEvent>
         <section>

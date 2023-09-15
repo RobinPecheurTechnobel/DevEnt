@@ -1,0 +1,28 @@
+<main class="hFlex">
+    <div class="monFondu">
+        <img *ngIf="event && event!.image" src="data:image/png;base64, {{event.image!.data}}" alt="{{event.image!.name}}" />
+    </div>
+    <div class="vFlex notImageContent">
+
+        <a routerLink="/event">Retour à la liste des évènements</a>
+
+        <section ngClass="vFlex {{isPastEvent()?'past-event':''}}" *ngIf="event">
+            <div class="hFlex header">
+                <h1>{{ event.name }}</h1>
+            </div>
+            
+            <p class="description">{{ event.description??"pas de description pour cet évènement"}}</p>
+            
+            <p *ngIf="event.maxGuest"> Occupation : {{occupation?occupation:"-1"}} / {{event.maxGuest}}</p>
+            
+            <p>Débute le : {{ event.startDate | date: "dd/MM/YYYY' à 'HH:mm" }}</p>
+            <p>Termine le : {{ event.endDate | date: "dd/MM/YYYY' à 'HH:mm" }}</p>
+
+            <a *ngIf="!isPastEvent() &&  user && user.id === event.creatorId && !event.isCancel">Annuler l'event</a>
+            <div class="hFlex buttons">
+                <button *ngIf="!isPastEvent() && user && user.id === event.creatorId">Modifier l'évènement</button>
+                <button *ngIf="!isPastEvent() && user" [disabled]="event.maxGuest && event.maxGuest <= (occupation?occupation:event.maxGuest)">Participer à l'évènement</button>
+            </div>
+        </section>
+    </div>
+</main>

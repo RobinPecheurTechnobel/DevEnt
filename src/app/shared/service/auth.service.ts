@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, OnInit } from '@angular/core';
 import { Member, User } from '../model/user';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -15,7 +15,7 @@ import { myApiErrorObject } from '../model/error';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService{
 
   /**
    * BehaviourSubject utilisé pour changer la valeur de l'utilisateur connecté
@@ -42,6 +42,8 @@ export class AuthService {
    */
   private _registerEndPoint : string = "api/Auth/Register";
 
+  private _memberByIdEndPoint : string = "api/Member/";
+
   /**
    * Constructeur du service
    * 
@@ -49,7 +51,14 @@ export class AuthService {
    * @param _httpClient Service envoyant des requêtes http
    */
   constructor( @Inject('urlBase') private _urlBase : string,
-          private _httpClient : HttpClient ) { }
+          private _httpClient : HttpClient ) {
+            
+    let memberId = localStorage.getItem("id");
+    let token = localStorage.getItem("deventToken");
+    if(memberId && token){
+      this._getMemberById(+memberId);
+    }
+  }
 
   /**
    * Méthode renvoyant l'information de l'utilisateur
@@ -80,6 +89,7 @@ export class AuthService {
       next : ( value ) =>{
         localStorage.setItem("deventToken", value.token);
         this._$connectedMember.next(value.member);
+        localStorage.setItem("id", value.member.id!.toString());
       },
       // En cas d'erreur
       error : ( error ) => {
@@ -101,6 +111,16 @@ export class AuthService {
 
     let login : Login = new Login( identifier,password);
     return this._httpClient.post<User>( this._urlBase + this._loginEndPoint, login );
+  }
+
+  private _getMemberById(memberId : number) : void{
+
+    this._httpClient.get<Member>( this._urlBase + this._memberByIdEndPoint + memberId).subscribe({
+      next : (response) => {
+        
+        this._$connectedMember.next(response);
+      }
+    })
   }
 
   /**

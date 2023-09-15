@@ -8,7 +8,7 @@
             <a routerLink="/event">Les évènements</a>
         </li>
         <li>
-            <a *ngIf="user">Mes évènements</a>
+            <a *ngIf="user" routerLink="/event/myEvents">Mes évènements</a>
         </li>
         <li>
             <p  *ngIf="user">Bonjour {{user.firstname}}</p>

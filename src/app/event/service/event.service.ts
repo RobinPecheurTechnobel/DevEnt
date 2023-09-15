@@ -11,8 +11,11 @@ import { Registration } from 'src/app/shared/model/registration';
 export class EventService {
 
   private _getNextActiviesEndPoint : string = 'api/Activity/NextActivities';
+  private _getMyActiviesEndPoint : string = 'api/Activity/MyActivities';
   private _getActivityByIdEndPoint : string = 'api/Activity/';
   private _getActivityImageByIdEndPointFinisher : string = '/Image';
+
+  private _getRegistrationByEventIdEndPoint : string = 'api/Registration/';
 
   constructor(  @Inject('urlBase') private _urlBase : string,
     private _httpClient : HttpClient ) { }

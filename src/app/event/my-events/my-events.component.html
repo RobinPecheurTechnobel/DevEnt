@@ -1,0 +1,45 @@
+<main class="vFlex">
+    <h1>Mes évènements :</h1>
+    <section *ngIf="events.length > 0; else noEvent">
+        <div *ngIf="getOnGoingEvent().length > 0">
+            <h2>A venir : </h2>
+            <a  *ngFor="let event of getOnGoingEvent()" id="{{event.id}}" routerLink="/event/{{event.id}}">
+                <article class="event">
+                    <h2>{{ event.name }}</h2>
+
+                    <p *ngIf="event.description; else noDescription">{{ event.description }}</p>
+                    <ng-template #noDescription>
+                        <p> ----------------</p>
+                    </ng-template>
+
+                    <p>Débute le : {{ event.startDate | date: "dd/MM/YYYY' à 'HH:mm" }}</p>
+                    <p>Termine le : {{ event.endDate | date: "dd/MM/YYYY' à 'HH:mm" }}</p>
+
+                </article>
+            </a>
+        </div>
+        
+        <div *ngIf="getPastEvent().length > 0">
+            <h2>Passé : </h2>
+            <a  *ngFor="let event of getPastEvent()" id="{{event.id}}" routerLink="/event/{{event.id}}">
+                <article class="event past-event">
+                    <h2>{{ event.name }}</h2>
+
+                    <p *ngIf="event.description; else noDescription">{{ event.description }}</p>
+                    <ng-template #noDescription>
+                        <p> ----------------</p>
+                    </ng-template>
+
+                    <p>Débute le : {{ event.startDate | date: "dd/MM/YYYY' à 'HH:mm" }}</p>
+                    <p>Termine le : {{ event.endDate | date: "dd/MM/YYYY' à 'HH:mm" }}</p>
+
+                </article>
+            </a>
+        </div>
+    </section>
+    <ng-template #noEvent>
+        <section>
+            <h2>ça manque d'évènement ici ...</h2>
+        </section>
+    </ng-template>
+</main>

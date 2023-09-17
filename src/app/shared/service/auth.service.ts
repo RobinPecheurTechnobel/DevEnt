@@ -42,6 +42,9 @@ export class AuthService{
    */
   private _registerEndPoint : string = "api/Auth/Register";
 
+  /**
+   * EndPoint pour aller chercher les informations d'un utilisateur avec son id
+   */
   private _memberByIdEndPoint : string = "api/Member/";
 
   /**
@@ -113,6 +116,11 @@ export class AuthService{
     return this._httpClient.post<User>( this._urlBase + this._loginEndPoint, login );
   }
 
+  /**
+   * Function recherchant les informations de l'utilisateur
+   * 
+   * @param memberId id de l'utilisateur à rechercher
+   */
   private _getMemberById(memberId : number) : void{
 
     this._httpClient.get<Member>( this._urlBase + this._memberByIdEndPoint + memberId).subscribe({
